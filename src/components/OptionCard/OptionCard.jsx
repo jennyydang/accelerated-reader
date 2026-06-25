@@ -1,11 +1,9 @@
 import styles from './OptionCard.module.scss'
 
-export default function OptionCard({ option, isSelected, isCorrect, isIncorrect, onClick, disabled }) {
+export default function OptionCard({ option, isSelected, onClick, disabled }) {
   const classes = [
     styles.card,
     isSelected && styles.selected,
-    isCorrect && styles.correct,
-    isIncorrect && styles.incorrect,
   ]
     .filter(Boolean)
     .join(' ')

@@ -1,0 +1,200 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-yellow;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-navy;
+  padding: $space-md $space-xl;
+  min-height: 64px;
+}
+
+.arBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.headerLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xl $space-md;
+}
+
+.card {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-xxl $space-xl;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: $shadow-card-hover;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.bookTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  text-align: center;
+}
+
+.scoreLine {
+  font-size: $font-size-md;
+  color: $color-dark;
+  text-align: center;
+  line-height: 1.5;
+
+  strong {
+    color: $color-blue;
+    font-weight: $font-weight-extrabold;
+    font-size: $font-size-lg;
+  }
+}
+
+.pct {
+  color: #666;
+  font-size: $font-size-sm;
+}
+
+.tierBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-md;
+  padding: $space-lg;
+  border-radius: $radius-md;
+  text-align: center;
+
+  &[data-stars="0"] { background-color: rgba(244, 67, 54, 0.08); }
+  &[data-stars="1"] { background-color: rgba(255, 193, 7, 0.12); }
+  &[data-stars="2"] { background-color: rgba(64, 112, 193, 0.08); }
+  &[data-stars="3"] { background-color: rgba(76, 175, 80, 0.1); }
+}
+
+.tierMessage {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-navy;
+  line-height: 1.4;
+}
+
+.stars {
+  display: flex;
+  gap: $space-sm;
+}
+
+.starFilled {
+  font-size: 2.5rem;
+  color: $color-amber;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+.starEmpty {
+  font-size: 2.5rem;
+  color: $color-gray-light;
+  line-height: 1;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid $color-gray-light;
+  margin: 0;
+}
+
+.nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.nameLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-dark;
+}
+
+.nameRow {
+  display: flex;
+  gap: $space-sm;
+}
+
+.nameInput {
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $color-dark;
+  padding: $space-sm $space-md;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-sm;
+  flex: 1;
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $color-blue;
+  }
+}
+
+.inputError {
+  border-color: $color-incorrect !important;
+}
+
+.submitBtn {
+  padding: $space-sm $space-lg;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  transition: background-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $color-blue-dark;
+  }
+}
+
+.errorMsg {
+  font-size: $font-size-sm;
+  color: $color-incorrect;
+  font-weight: $font-weight-semibold;
+}
+
+.backLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-navy;
+  }
+}

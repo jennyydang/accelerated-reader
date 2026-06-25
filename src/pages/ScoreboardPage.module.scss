@@ -1,0 +1,175 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-yellow;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-navy;
+  padding: $space-md $space-xl;
+  min-height: 64px;
+}
+
+.arBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.headerLabel {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-white;
+}
+
+.content {
+  flex: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.empty {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-xxl;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.emptyText {
+  font-size: $font-size-lg;
+  color: #888;
+  font-weight: $font-weight-semibold;
+}
+
+.tableWrapper {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card-hover;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thRank,
+.thName,
+.thBook,
+.thScore,
+.thStars {
+  padding: $space-md $space-lg;
+  background-color: $color-navy;
+  color: $color-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-extrabold;
+  text-align: left;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.thRank  { width: 48px; text-align: center; }
+.thScore { width: 72px; text-align: center; }
+.thStars { width: 110px; text-align: center; }
+
+.row {
+  border-bottom: 1px solid $color-gray-light;
+
+  &:last-child { border-bottom: none; }
+
+  &:nth-child(even) { background-color: rgba(0, 0, 0, 0.02); }
+
+  &[data-stars="3"] {
+    background-color: rgba(76, 175, 80, 0.06);
+  }
+}
+
+.rank {
+  padding: $space-md;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: #888;
+}
+
+.name {
+  padding: $space-md $space-lg;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-md;
+  color: $color-navy;
+}
+
+.book {
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  color: #666;
+  font-style: italic;
+}
+
+.score {
+  padding: $space-md;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-dark;
+}
+
+.starsCell {
+  padding: $space-md;
+  text-align: center;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.starFilled {
+  font-size: 1.25rem;
+  color: $color-amber;
+}
+
+.starEmpty {
+  font-size: 1.25rem;
+  color: $color-gray-light;
+}
+
+.homeBtn {
+  align-self: center;
+  padding: $space-md $space-xxl;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

@@ -52,23 +52,3 @@
     color: $color-white;
   }
 }
-
-.correct {
-  border-color: $color-correct;
-  background-color: rgba(76, 175, 80, 0.08);
-
-  .label {
-    background-color: $color-correct;
-    color: $color-white;
-  }
-}
-
-.incorrect {
-  border-color: $color-incorrect;
-  background-color: rgba(244, 67, 54, 0.08);
-
-  .label {
-    background-color: $color-incorrect;
-    color: $color-white;
-  }
-}

@@ -19,9 +19,7 @@ export default function QuizPage() {
   }, [book, navigate])
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedLabel, setSelectedLabel] = useState(null)
-  const [revealed, setRevealed] = useState(false)
-  const [score, setScore] = useState(0)
+  const [answers, setAnswers] = useState({})
 
   if (!book) return null
 
@@ -29,24 +27,23 @@ export default function QuizPage() {
   const totalQuestions = questions.length
   const question = questions[currentIndex]
   const isLast = currentIndex === totalQuestions - 1
+  const currentAnswer = answers[currentIndex]
+  const canAdvance = currentAnswer != null
 
   function handleSelect(label) {
-    if (revealed) return
-    setSelectedLabel(label)
-    setRevealed(true)
-    if (label === question.correctLabel) {
-      setScore(s => s + 1)
-    }
+    if (currentAnswer != null) return
+    setAnswers(prev => ({ ...prev, [currentIndex]: label }))
   }
 
   function handleNext() {
     if (isLast) {
-      navigate('/books', { state: { score, total: totalQuestions, bookTitle } })
+      const score = questions.reduce((count, q, i) => {
+        return answers[i] === q.correctLabel ? count + 1 : count
+      }, 0)
+      navigate('/results', { state: { score, total: totalQuestions, bookTitle, bookId } })
       return
     }
     setCurrentIndex(i => i + 1)
-    setSelectedLabel(null)
-    setRevealed(false)
   }
 
   return (
@@ -58,24 +55,16 @@ export default function QuizPage() {
         <p className={styles.question}>{question.question}</p>
 
         <ul className={styles.options}>
-          {question.options.map(option => {
-            const isSelected = selectedLabel === option.label
-            const isCorrect = revealed && option.label === question.correctLabel
-            const isIncorrect = revealed && isSelected && option.label !== question.correctLabel
-
-            return (
-              <li key={option.label}>
-                <OptionCard
-                  option={option}
-                  isSelected={isSelected}
-                  isCorrect={isCorrect}
-                  isIncorrect={isIncorrect}
-                  onClick={() => handleSelect(option.label)}
-                  disabled={revealed}
-                />
-              </li>
-            )
-          })}
+          {question.options.map(option => (
+            <li key={option.label}>
+              <OptionCard
+                option={option}
+                isSelected={currentAnswer === option.label}
+                onClick={() => handleSelect(option.label)}
+                disabled={canAdvance}
+              />
+            </li>
+          ))}
         </ul>
       </main>
 
@@ -83,7 +72,7 @@ export default function QuizPage() {
         currentQuestion={currentIndex + 1}
         totalQuestions={totalQuestions}
         onNext={handleNext}
-        canAdvance={revealed}
+        canAdvance={canAdvance}
         isLast={isLast}
       />
     </div>
