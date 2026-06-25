@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import booksData from '../data/booksData.js'
+import { useBooksContext } from '../context/BooksContext.jsx'
 import QuizHeader from '../components/QuizHeader/QuizHeader.jsx'
 import QuizFooter from '../components/QuizFooter/QuizFooter.jsx'
 import OptionCard from '../components/OptionCard/OptionCard.jsx'
@@ -10,8 +10,9 @@ import styles from './QuizPage.module.scss'
 export default function QuizPage() {
   const navigate = useNavigate()
   const { bookId } = useParams()
+  const { books } = useBooksContext()
 
-  const book = booksData.find(b => b.id === bookId)
+  const book = books.find(b => b.id === bookId)
 
   useEffect(() => {
     if (!book) navigate('/books', { replace: true })

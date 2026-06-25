@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import booksData from '../data/booksData.js'
+import { useBooksContext } from '../context/BooksContext.jsx'
 import BookCard from '../components/BookCard/BookCard.jsx'
 import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog.jsx'
 import styles from './BookSelectionPage.module.scss'
@@ -9,6 +9,7 @@ export default function BookSelectionPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const result = location.state
+  const { books } = useBooksContext()
 
   const [selectedBook, setSelectedBook] = useState(null)
 
@@ -23,10 +24,13 @@ export default function BookSelectionPage() {
         <div className={styles.headerText}>
           <span className={styles.headerLabel}>Accelerated Reader</span>
         </div>
+        <button className={styles.adminLink} onClick={() => navigate('/admin')}>
+          + Add Book
+        </button>
       </header>
 
       <main className={styles.content}>
-        {result && (
+        {result?.score !== undefined && (
           <div className={styles.scoreBanner}>
             <span className={styles.scoreIcon}>★</span>
             <span>
@@ -36,11 +40,17 @@ export default function BookSelectionPage() {
           </div>
         )}
 
+        {result?.newBook && (
+          <div className={styles.successBanner}>
+            <span>✓ <strong>{result.newBook}</strong> has been added to the library!</span>
+          </div>
+        )}
+
         <h2 className={styles.sectionTitle}>Select a Book</h2>
         <p className={styles.sectionSubtitle}>Choose a book to take a Reading Practice quiz.</p>
 
         <div className={styles.grid}>
-          {booksData.map(book => (
+          {books.map(book => (
             <BookCard key={book.id} book={book} onClick={setSelectedBook} />
           ))}
         </div>

@@ -1,0 +1,278 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f7fa;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-navy;
+  padding: $space-md $space-xl;
+  min-height: 64px;
+}
+
+.arBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.headerLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  flex: 1;
+}
+
+.backBtn {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-lg;
+  padding: $space-xs $space-md;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.content {
+  flex: 1;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  margin: 0;
+  padding-bottom: $space-sm;
+  border-bottom: 2px solid $color-gray-light;
+}
+
+.sectionHint {
+  font-size: $font-size-sm;
+  color: #666;
+  margin-top: -$space-sm;
+}
+
+// === Book Details ===
+
+.bookDetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $space-xl;
+  align-items: start;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-dark;
+}
+
+.input {
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $color-dark;
+  padding: $space-sm $space-md;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-sm;
+  background-color: $color-white;
+  transition: border-color $transition-fast;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: $color-blue;
+  }
+}
+
+.inputError {
+  border-color: $color-incorrect !important;
+}
+
+.errorMsg {
+  font-size: $font-size-sm;
+  color: $color-incorrect;
+  font-weight: $font-weight-semibold;
+}
+
+.hint {
+  font-size: $font-size-sm;
+  color: #888;
+}
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.colorPicker {
+  width: 48px;
+  height: 40px;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  padding: 2px;
+  background: $color-white;
+}
+
+.colorHex {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: #555;
+  font-family: monospace;
+}
+
+// === Cover Preview ===
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.previewLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: #666;
+  text-align: center;
+}
+
+.previewBook {
+  width: 100px;
+  height: 140px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  box-shadow: $shadow-card-hover;
+  flex-shrink: 0;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.previewColor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-sm;
+}
+
+.previewTitle {
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  word-break: break-word;
+}
+
+// === Questions ===
+
+.questionsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.addQuestionBtn {
+  align-self: flex-start;
+  padding: $space-sm $space-lg;
+  background-color: $color-white;
+  color: $color-blue;
+  border: 2px solid $color-blue;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+}
+
+// === Submit ===
+
+.submitRow {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $space-lg;
+  border-top: 2px solid $color-gray-light;
+}
+
+.submitBtn {
+  padding: $space-md $space-xxl;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
