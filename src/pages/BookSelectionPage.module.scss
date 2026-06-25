@@ -1,0 +1,110 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-yellow;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-navy;
+  padding: $space-md $space-xl;
+  min-height: 64px;
+}
+
+.arBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+}
+
+.content {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.scoreBanner {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  background-color: $color-white;
+  border: 2px solid $color-amber;
+  border-radius: $radius-md;
+  padding: $space-md $space-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-navy;
+
+  strong {
+    color: $color-blue;
+    font-weight: $font-weight-extrabold;
+  }
+
+  em {
+    font-style: italic;
+    color: $color-dark;
+  }
+}
+
+.scoreIcon {
+  color: $color-amber;
+  font-size: $font-size-xl;
+  line-height: 1;
+}
+
+.sectionTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  margin: 0;
+}
+
+.sectionSubtitle {
+  font-size: $font-size-md;
+  color: #555;
+  margin-top: -$space-sm;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-xl;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-lg;
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
+}

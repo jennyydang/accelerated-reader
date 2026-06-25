@@ -1,10 +1,8 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './LandingPage.module.scss'
 
 export default function LandingPage() {
   const navigate = useNavigate()
-  const location = useLocation()
-  const result = location.state
 
   return (
     <main className={styles.page}>
@@ -14,15 +12,8 @@ export default function LandingPage() {
           alt="Accelerated Reader - two kids reading"
           className={styles.logo}
         />
-        {result && (
-          <div className={styles.scoreBox}>
-            <p className={styles.scoreText}>
-              You scored <strong>{result.score}</strong> out of <strong>{result.total}</strong>!
-            </p>
-          </div>
-        )}
-        <button className={styles.beginButton} onClick={() => navigate('/quiz')}>
-          {result ? 'Try Again' : "Let's Begin"}
+        <button className={styles.beginButton} onClick={() => navigate('/books')}>
+          Let's Begin
         </button>
       </div>
     </main>

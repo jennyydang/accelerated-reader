@@ -1,0 +1,388 @@
+const booksData = [
+  {
+    id: 'of-mice-and-men',
+    title: 'Of Mice and Men',
+    author: 'John Steinbeck',
+    isbn: '9780140177398',
+    coverColor: '#7B3F00',
+    questions: [
+      {
+        id: 1,
+        question: 'George thought he and Lennie would get the job if —',
+        options: [
+          { label: 'A', text: 'the other workers could see how strong Lennie was' },
+          { label: 'B', text: 'he could think of a good lie to explain their presence at the ranch' },
+          { label: 'C', text: 'the boss could see Lennie work before he heard him speak' },
+          { label: 'D', text: 'he could keep Lennie out of sight until the boss was gone' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 2,
+        question: "What is Lennie's greatest dream?",
+        options: [
+          { label: 'A', text: 'To become a ranch foreman' },
+          { label: 'B', text: 'To own his own farm and tend rabbits' },
+          { label: 'C', text: 'To save enough money to move to the city' },
+          { label: 'D', text: 'To find his family back in Auburn' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 3,
+        question: 'What does Lennie always carry with him as a comfort object?',
+        options: [
+          { label: 'A', text: 'A photograph of his Aunt Clara' },
+          { label: 'B', text: 'A piece of velvet cloth' },
+          { label: 'C', text: 'A small dead mouse' },
+          { label: 'D', text: 'A worn playing card' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 4,
+        question: "What is the name of the boss's son who dislikes George and Lennie?",
+        options: [
+          { label: 'A', text: 'Slim' },
+          { label: 'B', text: 'Candy' },
+          { label: 'C', text: 'Curley' },
+          { label: 'D', text: 'Crooks' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 5,
+        question: 'How does the novel end?',
+        options: [
+          { label: 'A', text: 'George and Lennie buy their dream farm' },
+          { label: 'B', text: 'Lennie escapes to the hills and starts over' },
+          { label: 'C', text: 'George shoots Lennie to spare him from a worse fate' },
+          { label: 'D', text: "Curley's wife accuses Slim of attacking her" },
+        ],
+        correctLabel: 'C',
+      },
+    ],
+  },
+  {
+    id: 'the-giver',
+    title: 'The Giver',
+    author: 'Lois Lowry',
+    isbn: '9780440237686',
+    coverColor: '#1A3A5C',
+    questions: [
+      {
+        id: 1,
+        question: "What is the name of the community's strict set of rules called?",
+        options: [
+          { label: 'A', text: 'The Rules' },
+          { label: 'B', text: 'The Guidelines' },
+          { label: 'C', text: 'The Principles' },
+          { label: 'D', text: 'The Regulations' },
+        ],
+        correctLabel: 'A',
+      },
+      {
+        id: 2,
+        question: "What assignment is Jonas given at the Ceremony of Twelve?",
+        options: [
+          { label: 'A', text: 'Caretaker of the Old' },
+          { label: 'B', text: 'Receiver of Memory' },
+          { label: 'C', text: 'Director of Recreation' },
+          { label: 'D', text: 'Nurturer' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 3,
+        question: "What is the first memory The Giver transmits to Jonas?",
+        options: [
+          { label: 'A', text: 'War' },
+          { label: 'B', text: 'Music' },
+          { label: 'C', text: 'Sledding down a snow-covered hill' },
+          { label: 'D', text: 'A family holiday celebration' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 4,
+        question: "What color can Jonas begin to perceive that others in the community cannot?",
+        options: [
+          { label: 'A', text: 'Blue' },
+          { label: 'B', text: 'Red' },
+          { label: 'C', text: 'Green' },
+          { label: 'D', text: 'Yellow' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 5,
+        question: "What does 'release' actually mean in Jonas's community?",
+        options: [
+          { label: 'A', text: 'Being sent to live Elsewhere' },
+          { label: 'B', text: 'Graduation to a new community role' },
+          { label: 'C', text: 'Death by lethal injection' },
+          { label: 'D', text: 'Retirement from assigned duties' },
+        ],
+        correctLabel: 'C',
+      },
+    ],
+  },
+  {
+    id: 'charlottes-web',
+    title: "Charlotte's Web",
+    author: 'E.B. White',
+    isbn: '9780064400558',
+    coverColor: '#2E6B3E',
+    questions: [
+      {
+        id: 1,
+        question: "Why does Fern's father almost kill Wilbur at the start of the story?",
+        options: [
+          { label: 'A', text: 'Wilbur was sick and could not be cured' },
+          { label: 'B', text: 'Wilbur was the runt of the litter' },
+          { label: 'C', text: "Wilbur had escaped from the pig pen" },
+          { label: 'D', text: 'There was no room left in the barn' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 2,
+        question: "What does Charlotte write in her web to save Wilbur?",
+        options: [
+          { label: 'A', text: '"Special Pig"' },
+          { label: 'B', text: '"Save Me"' },
+          { label: 'C', text: '"Some Pig"' },
+          { label: 'D', text: '"Best Pig"' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 3,
+        question: 'Where does Wilbur win a special prize?',
+        options: [
+          { label: 'A', text: 'The county fair' },
+          { label: 'B', text: "The state capitol" },
+          { label: 'C', text: 'The village market' },
+          { label: 'D', text: 'The local farm show' },
+        ],
+        correctLabel: 'A',
+      },
+      {
+        id: 4,
+        question: "What happens to Charlotte at the end of the story?",
+        options: [
+          { label: 'A', text: 'She moves to a new barn' },
+          { label: 'B', text: 'She is taken home by Fern' },
+          { label: 'C', text: 'She dies after laying her egg sac' },
+          { label: 'D', text: 'She hibernates for the winter' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 5,
+        question: "Who is Wilbur's first friend at the Zuckerman farm?",
+        options: [
+          { label: 'A', text: 'Charlotte' },
+          { label: 'B', text: 'Templeton the rat' },
+          { label: 'C', text: 'The goose' },
+          { label: 'D', text: 'The old sheep' },
+        ],
+        correctLabel: 'B',
+      },
+    ],
+  },
+  {
+    id: 'holes',
+    title: 'Holes',
+    author: 'Louis Sachar',
+    isbn: '9780440414803',
+    coverColor: '#B5651D',
+    questions: [
+      {
+        id: 1,
+        question: 'Why is Stanley Yelnats sent to Camp Green Lake?',
+        options: [
+          { label: 'A', text: 'He broke into a school' },
+          { label: 'B', text: 'He stole a car' },
+          { label: 'C', text: "He was convicted of stealing Clyde Livingston's sneakers" },
+          { label: 'D', text: 'He was caught shoplifting food' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 2,
+        question: 'Why do the campers dig holes every day?',
+        options: [
+          { label: 'A', text: 'To build a swimming pool' },
+          { label: 'B', text: 'As punishment and character building' },
+          { label: 'C', text: "The Warden is searching for buried treasure" },
+          { label: 'D', text: 'To plant a new orchard' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 3,
+        question: "What does Stanley find buried in one of the holes?",
+        options: [
+          { label: 'A', text: 'A gold coin' },
+          { label: 'B', text: 'An old lipstick tube with the initials K.B.' },
+          { label: 'C', text: 'A treasure chest' },
+          { label: 'D', text: 'Old newspaper clippings' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 4,
+        question: "What is Zero's real name?",
+        options: [
+          { label: 'A', text: 'Hector Zeroni' },
+          { label: 'B', text: 'Marcus Zero' },
+          { label: 'C', text: 'Darius Zane' },
+          { label: 'D', text: 'Felix Zeroni' },
+        ],
+        correctLabel: 'A',
+      },
+      {
+        id: 5,
+        question: "What is the curse on the Yelnats family said to stem from?",
+        options: [
+          { label: 'A', text: "Stanley's great-great-grandfather stealing a pig" },
+          { label: 'B', text: "Stanley's great-great-grandfather breaking a promise to Madame Zeroni" },
+          { label: 'C', text: 'A bad business deal gone wrong' },
+          { label: 'D', text: 'Digging on forbidden ground' },
+        ],
+        correctLabel: 'B',
+      },
+    ],
+  },
+  {
+    id: 'the-outsiders',
+    title: 'The Outsiders',
+    author: 'S.E. Hinton',
+    isbn: '9780140385724',
+    coverColor: '#4A235A',
+    questions: [
+      {
+        id: 1,
+        question: 'What are the two rival gangs in the story?',
+        options: [
+          { label: 'A', text: 'The Jets and the Sharks' },
+          { label: 'B', text: 'The Greasers and the Socs' },
+          { label: 'C', text: 'The Hoods and the Preps' },
+          { label: 'D', text: 'The Greasers and the Bloods' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 2,
+        question: 'Who is the narrator of The Outsiders?',
+        options: [
+          { label: 'A', text: 'Sodapop Curtis' },
+          { label: 'B', text: 'Darry Curtis' },
+          { label: 'C', text: 'Ponyboy Curtis' },
+          { label: 'D', text: 'Johnny Cade' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 3,
+        question: 'Why does Johnny kill Bob?',
+        options: [
+          { label: 'A', text: 'Bob had stolen from the gang' },
+          { label: 'B', text: 'Bob was about to drown Ponyboy' },
+          { label: 'C', text: 'Bob had disrespected Johnny\'s family' },
+          { label: 'D', text: 'Bob had attacked Darry' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 4,
+        question: 'What does Johnny tell Ponyboy to do before he dies?',
+        options: [
+          { label: 'A', text: 'Leave the gang and go straight' },
+          { label: 'B', text: 'Take care of Sodapop' },
+          { label: 'C', text: 'Stay gold' },
+          { label: 'D', text: 'Avenge his death' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 5,
+        question: 'What poem does Ponyboy recite to Johnny while they are hiding?',
+        options: [
+          { label: 'A', text: '"The Road Not Taken" by Robert Frost' },
+          { label: 'B', text: '"Nothing Gold Can Stay" by Robert Frost' },
+          { label: 'C', text: '"O Captain! My Captain!" by Walt Whitman' },
+          { label: 'D', text: '"If" by Rudyard Kipling' },
+        ],
+        correctLabel: 'B',
+      },
+    ],
+  },
+  {
+    id: 'to-kill-a-mockingbird',
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    isbn: '9780061743528',
+    coverColor: '#5D4E37',
+    questions: [
+      {
+        id: 1,
+        question: 'Who is the narrator of To Kill a Mockingbird?',
+        options: [
+          { label: 'A', text: 'Atticus Finch' },
+          { label: 'B', text: 'Scout Finch' },
+          { label: 'C', text: 'Jem Finch' },
+          { label: 'D', text: 'Boo Radley' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 2,
+        question: 'What crime is Tom Robinson accused of?',
+        options: [
+          { label: 'A', text: 'Robbery' },
+          { label: 'B', text: 'Murder' },
+          { label: 'C', text: 'Raping Mayella Ewell' },
+          { label: 'D', text: 'Trespassing' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 3,
+        question: "What does Atticus prove about Tom Robinson's alleged crime?",
+        options: [
+          { label: 'A', text: 'Tom was not in Maycomb that night' },
+          { label: 'B', text: "Tom's left hand was disabled, making the accusation physically impossible" },
+          { label: 'C', text: 'Tom had an alibi with multiple witnesses' },
+          { label: 'D', text: 'Mayella recanted her testimony' },
+        ],
+        correctLabel: 'B',
+      },
+      {
+        id: 4,
+        question: 'Who attacks Jem and Scout on their way home from the pageant?',
+        options: [
+          { label: 'A', text: 'Tom Robinson' },
+          { label: 'B', text: 'Walter Cunningham' },
+          { label: 'C', text: 'Bob Ewell' },
+          { label: 'D', text: 'Boo Radley' },
+        ],
+        correctLabel: 'C',
+      },
+      {
+        id: 5,
+        question: 'What does Boo Radley do at the end of the novel?',
+        options: [
+          { label: 'A', text: 'Moves away from Maycomb' },
+          { label: 'B', text: 'Saves Scout and Jem from Bob Ewell' },
+          { label: 'C', text: 'Testifies on behalf of Tom Robinson' },
+          { label: 'D', text: 'Is arrested for the attack on the children' },
+        ],
+        correctLabel: 'B',
+      },
+    ],
+  },
+]
+
+export default booksData

@@ -1,0 +1,78 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  cursor: pointer;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  outline: none;
+  overflow: hidden;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: $shadow-card-hover;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+.coverWrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: $color-gray-light;
+}
+
+.coverImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.coverFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-md;
+}
+
+.fallbackTitle {
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  flex: 1;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-navy;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.author {
+  font-size: $font-size-sm;
+  color: #666;
+  font-weight: $font-weight-semibold;
+}

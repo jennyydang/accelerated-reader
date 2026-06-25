@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import quizData from '../data/quizData.js'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import booksData from '../data/booksData.js'
 import QuizHeader from '../components/QuizHeader/QuizHeader.jsx'
 import QuizFooter from '../components/QuizFooter/QuizFooter.jsx'
 import OptionCard from '../components/OptionCard/OptionCard.jsx'
@@ -9,14 +9,23 @@ import styles from './QuizPage.module.scss'
 
 export default function QuizPage() {
   const navigate = useNavigate()
-  const { bookTitle, questions } = quizData
-  const totalQuestions = questions.length
+  const { bookId } = useParams()
+
+  const book = booksData.find(b => b.id === bookId)
+
+  useEffect(() => {
+    if (!book) navigate('/books', { replace: true })
+  }, [book, navigate])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedLabel, setSelectedLabel] = useState(null)
   const [revealed, setRevealed] = useState(false)
   const [score, setScore] = useState(0)
 
+  if (!book) return null
+
+  const { title: bookTitle, questions } = book
+  const totalQuestions = questions.length
   const question = questions[currentIndex]
   const isLast = currentIndex === totalQuestions - 1
 
@@ -31,8 +40,7 @@ export default function QuizPage() {
 
   function handleNext() {
     if (isLast) {
-      const finalScore = selectedLabel === question.correctLabel ? score : score
-      navigate('/', { state: { score: finalScore, total: totalQuestions } })
+      navigate('/books', { state: { score, total: totalQuestions, bookTitle } })
       return
     }
     setCurrentIndex(i => i + 1)

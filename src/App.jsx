@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage.jsx'
+import BookSelectionPage from './pages/BookSelectionPage.jsx'
 import QuizPage from './pages/QuizPage.jsx'
 
 export default function App() {
@@ -7,7 +8,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/books" element={<BookSelectionPage />} />
+        <Route path="/quiz/:bookId" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   )

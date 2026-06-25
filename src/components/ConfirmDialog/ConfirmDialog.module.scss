@@ -1,0 +1,136 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-md;
+  animation: fadeIn $transition-fast forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.dialog {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-xl;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+  animation: slideUp $transition-normal forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+.coverThumb {
+  width: 60px;
+  height: 80px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: $color-gray-light;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.thumbFallback {
+  width: 100%;
+  height: 100%;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.rpLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-amber;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.bookTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.bookAuthor {
+  font-size: $font-size-sm;
+  color: #666;
+  font-weight: $font-weight-semibold;
+}
+
+.prompt {
+  font-size: $font-size-md;
+  color: $color-dark;
+  line-height: 1.6;
+}
+
+.emphasis {
+  color: $color-blue;
+  font-weight: $font-weight-extrabold;
+}
+
+.actions {
+  display: flex;
+  gap: $space-md;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  padding: $space-sm $space-lg;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: #555;
+  background-color: $color-white;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: #aaa;
+    color: $color-dark;
+  }
+}
+
+.confirmBtn {
+  padding: $space-sm $space-lg;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+  }
+}
