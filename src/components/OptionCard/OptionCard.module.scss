@@ -1,0 +1,74 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  width: 100%;
+  padding: $space-md $space-lg;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-md;
+  background-color: $color-white;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color $transition-fast, background-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(:disabled) {
+    border-color: $color-blue;
+    box-shadow: $shadow-card;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  background-color: $color-gray-light;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+  color: $color-dark;
+  flex-shrink: 0;
+  transition: background-color $transition-fast, color $transition-fast;
+}
+
+.text {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-dark;
+  line-height: 1.4;
+}
+
+.selected {
+  border-color: $color-blue;
+  background-color: $color-option-bg-selected;
+
+  .label {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+}
+
+.correct {
+  border-color: $color-correct;
+  background-color: rgba(76, 175, 80, 0.08);
+
+  .label {
+    background-color: $color-correct;
+    color: $color-white;
+  }
+}
+
+.incorrect {
+  border-color: $color-incorrect;
+  background-color: rgba(244, 67, 54, 0.08);
+
+  .label {
+    background-color: $color-incorrect;
+    color: $color-white;
+  }
+}

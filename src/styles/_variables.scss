@@ -1,0 +1,50 @@
+// === Color Palette ===
+$color-navy:       #2C4767;
+$color-blue:       #4070C1;
+$color-blue-dark:  #3460b2;
+$color-yellow:     #FFF9C4;
+$color-amber:      #FFC107;
+$color-gray-light: #E0E0E0;
+$color-dark:       #212121;
+$color-white:      #FFFFFF;
+
+// === Semantic Colors ===
+$color-correct:   #4CAF50;
+$color-incorrect: #F44336;
+$color-option-bg-selected: rgba(64, 112, 193, 0.08);
+
+// === Typography ===
+$font-family-base:    'Nunito', 'Segoe UI', sans-serif;
+$font-size-sm:        0.875rem;
+$font-size-md:        1rem;
+$font-size-lg:        1.25rem;
+$font-size-xl:        1.5rem;
+$font-weight-regular:   400;
+$font-weight-semibold:  600;
+$font-weight-bold:      700;
+$font-weight-extrabold: 800;
+
+// === Spacing ===
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  32px;
+$space-xxl: 48px;
+
+// === Border Radius ===
+$radius-sm:   6px;
+$radius-md:   12px;
+$radius-lg:   20px;
+$radius-full: 9999px;
+
+// === Transitions ===
+$transition-fast:   0.15s ease;
+$transition-normal: 0.25s ease;
+
+// === Shadows ===
+$shadow-card:       0 2px 8px rgba(0, 0, 0, 0.12);
+$shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.18);
+
+// === Breakpoints ===
+$bp-mobile: 480px;

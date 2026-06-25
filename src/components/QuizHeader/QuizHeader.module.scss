@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-navy;
+  color: $color-white;
+  padding: $space-md $space-xl;
+  min-height: 64px;
+}
+
+.logoMark {
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.bookTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin: 0;
+}

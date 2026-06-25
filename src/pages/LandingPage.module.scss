@@ -1,0 +1,67 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-yellow;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xl;
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-xxl $space-xl;
+  box-shadow: $shadow-card-hover;
+  max-width: 480px;
+  width: 90%;
+}
+
+.logo {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.scoreBox {
+  background-color: $color-yellow;
+  border: 2px solid $color-amber;
+  border-radius: $radius-md;
+  padding: $space-md $space-xl;
+  text-align: center;
+  width: 100%;
+}
+
+.scoreText {
+  font-size: $font-size-lg;
+  color: $color-navy;
+  font-weight: $font-weight-semibold;
+
+  strong {
+    color: $color-blue;
+    font-weight: $font-weight-extrabold;
+  }
+}
+
+.beginButton {
+  padding: $space-md $space-xxl;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.02em;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

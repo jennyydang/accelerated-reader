@@ -1,0 +1,61 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-md $space-xl;
+  background-color: $color-white;
+  border-top: 1px solid $color-gray-light;
+  min-height: 72px;
+}
+
+.rpBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.rpLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  background-color: $color-amber;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-sm;
+  color: $color-dark;
+}
+
+.subLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-navy;
+  white-space: nowrap;
+}
+
+.questionCounter {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-dark;
+}
+
+.nextButton {
+  padding: $space-sm $space-xl;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  transition: background-color $transition-fast, opacity $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: $color-blue-dark;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
