@@ -2,26 +2,38 @@ import { createContext, useContext, useState } from 'react'
 import booksData from '../data/booksData.js'
 
 const BooksContext = createContext(null)
+const STORAGE_KEY = 'arBooks'
 
-function loadCustomBooks() {
+function loadBooks() {
   try {
-    return JSON.parse(localStorage.getItem('customBooks') || '[]')
-  } catch {
-    return []
-  }
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    if (Array.isArray(stored) && stored.length > 0) return stored
+  } catch {}
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(booksData))
+  return booksData
+}
+
+function saveBooks(books) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(books))
 }
 
 export function BooksProvider({ children }) {
-  const [books, setBooks] = useState(() => [...booksData, ...loadCustomBooks()])
+  const [books, setBooks] = useState(loadBooks)
 
   function addBook(book) {
-    const updated = [...loadCustomBooks(), book]
-    localStorage.setItem('customBooks', JSON.stringify(updated))
-    setBooks([...booksData, ...updated])
+    const updated = [book, ...books]
+    saveBooks(updated)
+    setBooks(updated)
+  }
+
+  function updateBook(id, updatedBook) {
+    const updated = books.map(b => b.id === id ? updatedBook : b)
+    saveBooks(updated)
+    setBooks(updated)
   }
 
   return (
-    <BooksContext.Provider value={{ books, addBook }}>
+    <BooksContext.Provider value={{ books, addBook, updateBook }}>
       {children}
     </BooksContext.Provider>
   )

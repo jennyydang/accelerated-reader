@@ -1,3 +1,86 @@
+// ===========================
+// Login screen
+// ===========================
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-yellow;
+  padding: $space-xl $space-md;
+}
+
+.loginCard {
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card-hover;
+  padding: $space-xxl;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.loginHeading {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.passwordInput {
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $color-dark;
+  padding: $space-sm $space-md;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-sm;
+  width: 100%;
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $color-blue;
+  }
+}
+
+.loginBtn {
+  padding: $space-sm $space-lg;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+  }
+}
+
+.loginError {
+  font-size: $font-size-sm;
+  color: $color-incorrect;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  margin: 0;
+}
+
+// ===========================
+// Shared admin page shell
+// ===========================
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -53,9 +136,27 @@
   }
 }
 
+.logoutBtn {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-lg;
+  padding: $space-xs $space-md;
+  cursor: pointer;
+  transition: color $transition-fast, border-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    color: $color-white;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
 .content {
   flex: 1;
-  max-width: 860px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   padding: $space-xl;
@@ -63,6 +164,89 @@
   flex-direction: column;
   gap: $space-xl;
 }
+
+// ===========================
+// Admin list view
+// ===========================
+
+.successBanner {
+  background-color: rgba(76, 175, 80, 0.12);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: $radius-md;
+  padding: $space-md $space-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: #2e7d32;
+}
+
+.listActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+}
+
+.listTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  margin: 0;
+}
+
+.addBookBtn {
+  padding: $space-sm $space-xl;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.adminGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: $space-lg;
+}
+
+.bookCardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.editBtn {
+  width: 100%;
+  padding: $space-xs $space-md;
+  background-color: $color-white;
+  color: $color-blue;
+  border: 2px solid $color-blue;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+}
+
+// ===========================
+// Add / Edit form
+// ===========================
 
 .section {
   display: flex;
@@ -84,8 +268,6 @@
   color: #666;
   margin-top: -$space-sm;
 }
-
-// === Book Details ===
 
 .bookDetailsGrid {
   display: grid;
@@ -171,8 +353,6 @@
   font-family: monospace;
 }
 
-// === Cover Preview ===
-
 .preview {
   display: flex;
   flex-direction: column;
@@ -222,8 +402,6 @@
   word-break: break-word;
 }
 
-// === Questions ===
-
 .questionsList {
   display: flex;
   flex-direction: column;
@@ -248,13 +426,30 @@
   }
 }
 
-// === Submit ===
-
 .submitRow {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: $space-md;
   padding-top: $space-lg;
   border-top: 2px solid $color-gray-light;
+}
+
+.cancelFormBtn {
+  padding: $space-md $space-xl;
+  background-color: $color-white;
+  color: #666;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: #999;
+    color: $color-dark;
+  }
 }
 
 .submitBtn {
