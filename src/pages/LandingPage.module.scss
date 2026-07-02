@@ -1,5 +1,5 @@
 .page {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +23,8 @@
   max-width: 420px;
   width: 100%;
   height: auto;
+  max-height: 45vh;
+  object-fit: contain;
   display: block;
 }
 
