@@ -1,5 +1,5 @@
 .page {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
 
 .content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: $space-xl;
   max-width: 720px;

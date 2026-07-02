@@ -6,6 +6,7 @@
   color: $color-white;
   padding: $space-md $space-xl;
   min-height: 64px;
+  flex-shrink: 0;
 }
 
 .logoMark {

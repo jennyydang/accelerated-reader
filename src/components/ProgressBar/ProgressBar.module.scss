@@ -3,6 +3,7 @@
   height: 6px;
   background-color: $color-gray-light;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .fill {
