@@ -148,6 +148,6 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: $space-xxl $space-xl;
+  gap: $space-xl $space-lg;
   justify-items: center;
 }
