@@ -128,18 +128,26 @@
   margin-top: -$space-sm;
 }
 
+.homeBtn {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-lg;
+  padding: $space-xs $space-md;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-xl;
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-lg;
-  }
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-    gap: $space-md;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: $space-xxl $space-xl;
+  justify-items: center;
 }

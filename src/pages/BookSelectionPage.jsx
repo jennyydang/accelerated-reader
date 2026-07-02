@@ -24,7 +24,7 @@ export default function BookSelectionPage() {
         <div className={styles.headerText}>
           <span className={styles.headerLabel}>Accelerated Reader</span>
         </div>
-
+        <button className={styles.homeBtn} onClick={() => navigate('/')}>← Home</button>
       </header>
 
       <main className={styles.content}>
