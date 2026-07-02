@@ -70,6 +70,25 @@ $pages-w: 8px;
   transform-origin: right center;
   transform: rotateY(-90deg);
   filter: brightness(0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.spineText {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 200px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  padding: 0 2px;
 }
 
 .bookPages {

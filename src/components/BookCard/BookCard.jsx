@@ -34,7 +34,9 @@ export default function BookCard({ book, onClick }) {
             </div>
           )}
         </div>
-        <div className={styles.bookSpine} style={{ backgroundColor: spineColor }} />
+        <div className={styles.bookSpine} style={{ backgroundColor: spineColor }}>
+          <span className={styles.spineText}>{book.title}</span>
+        </div>
         <div className={styles.bookPages} />
       </div>
       <p className={styles.title}>{book.title}</p>
