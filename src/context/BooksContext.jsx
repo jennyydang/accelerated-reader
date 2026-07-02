@@ -32,8 +32,14 @@ export function BooksProvider({ children }) {
     setBooks(updated)
   }
 
+  function removeBook(id) {
+    const updated = books.filter(b => b.id !== id)
+    saveBooks(updated)
+    setBooks(updated)
+  }
+
   return (
-    <BooksContext.Provider value={{ books, addBook, updateBook }}>
+    <BooksContext.Provider value={{ books, addBook, updateBook, removeBook }}>
       {children}
     </BooksContext.Provider>
   )

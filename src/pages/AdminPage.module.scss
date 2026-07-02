@@ -244,6 +244,67 @@
   }
 }
 
+.removeBtn {
+  width: 100%;
+  padding: $space-xs $space-md;
+  background-color: $color-white;
+  color: $color-incorrect;
+  border: 2px solid $color-incorrect;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background-color: $color-incorrect;
+    color: $color-white;
+  }
+}
+
+.confirmRow {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.confirmText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-incorrect;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.confirmYesBtn {
+  flex: 1;
+  padding: $space-xs 0;
+  background-color: $color-incorrect;
+  color: $color-white;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+
+  &:hover { opacity: 0.85; }
+}
+
+.confirmNoBtn {
+  flex: 1;
+  padding: $space-xs 0;
+  background-color: $color-white;
+  color: #666;
+  border: 1px solid $color-gray-light;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: border-color $transition-fast;
+
+  &:hover { border-color: #999; }
+}
+
 // ===========================
 // Add / Edit form
 // ===========================
@@ -328,6 +389,51 @@
 .hint {
   font-size: $font-size-sm;
   color: #888;
+}
+
+.coverModeToggle {
+  display: flex;
+  border: 2px solid $color-gray-light;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.coverModeBtn {
+  padding: $space-xs $space-md;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: #666;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+  border-right: 1px solid $color-gray-light;
+
+  &:last-child { border-right: none; }
+  &:hover { background-color: #f0f0f0; }
+}
+
+.coverModeBtnActive {
+  background-color: $color-blue;
+  color: $color-white;
+
+  &:hover { background-color: $color-blue-dark; }
+}
+
+.fileInput {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  color: $color-dark;
+  padding: $space-sm;
+  border: 2px dashed $color-gray-light;
+  border-radius: $radius-sm;
+  background-color: $color-white;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color $transition-fast;
+
+  &:hover { border-color: $color-blue; }
 }
 
 .colorRow {

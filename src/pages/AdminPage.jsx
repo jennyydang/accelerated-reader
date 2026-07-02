@@ -21,6 +21,9 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
   const [author, setAuthor] = useState(initialBook?.author ?? '')
   const [coverImageUrl, setCoverImageUrl] = useState(initialBook?.coverImage ?? '')
   const [coverColor, setCoverColor] = useState(initialBook?.coverColor ?? '#4070C1')
+  const [coverMode, setCoverMode] = useState(() =>
+    initialBook?.coverImage?.startsWith('data:') ? 'upload' : 'url'
+  )
   const [previewImgFailed, setPreviewImgFailed] = useState(false)
   const [questions, setQuestions] = useState(() =>
     initialBook?.questions?.length > 0 ? initialBook.questions : [blankQuestion(1)]
@@ -33,6 +36,17 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
   function handleCoverUrlChange(val) {
     setCoverImageUrl(val)
     setPreviewImgFailed(false)
+  }
+
+  function handleFileUpload(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = evt => {
+      setCoverImageUrl(evt.target.result)
+      setPreviewImgFailed(false)
+    }
+    reader.readAsDataURL(file)
   }
 
   function updateQuestion(index, updated) {
@@ -121,16 +135,47 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
             </div>
 
             <div className={styles.field}>
-              <label className={styles.fieldLabel} htmlFor="coverUrl">Cover Image URL</label>
-              <input
-                id="coverUrl"
-                type="url"
-                className={styles.input}
-                value={coverImageUrl}
-                onChange={e => handleCoverUrlChange(e.target.value)}
-                placeholder="https://example.com/book-cover.jpg"
-              />
-              <p className={styles.hint}>Paste any image URL. Leave blank to use a color background.</p>
+              <label className={styles.fieldLabel}>Cover Image</label>
+              <div className={styles.coverModeToggle}>
+                <button
+                  type="button"
+                  className={`${styles.coverModeBtn} ${coverMode === 'url' ? styles.coverModeBtnActive : ''}`}
+                  onClick={() => setCoverMode('url')}
+                >
+                  URL
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.coverModeBtn} ${coverMode === 'upload' ? styles.coverModeBtnActive : ''}`}
+                  onClick={() => setCoverMode('upload')}
+                >
+                  Upload Photo
+                </button>
+              </div>
+              {coverMode === 'url' ? (
+                <>
+                  <input
+                    id="coverUrl"
+                    type="url"
+                    className={styles.input}
+                    value={coverMode === 'url' ? coverImageUrl : ''}
+                    onChange={e => handleCoverUrlChange(e.target.value)}
+                    placeholder="https://example.com/book-cover.jpg"
+                  />
+                  <p className={styles.hint}>Paste any image URL. Leave blank to use a color background.</p>
+                </>
+              ) : (
+                <>
+                  <input
+                    id="coverFile"
+                    type="file"
+                    accept="image/*"
+                    className={styles.fileInput}
+                    onChange={handleFileUpload}
+                  />
+                  {coverImageUrl && <p className={styles.hint}>Photo selected — see preview on the right.</p>}
+                </>
+              )}
             </div>
 
             <div className={styles.field}>
@@ -202,12 +247,13 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
 
 export default function AdminPage() {
   const navigate = useNavigate()
-  const { books, addBook, updateBook } = useBooksContext()
+  const { books, addBook, updateBook, removeBook } = useBooksContext()
 
   const [view, setView] = useState(() =>
     sessionStorage.getItem('adminAuth') ? 'list' : 'login'
   )
   const [editTarget, setEditTarget] = useState(null)
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null)
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
@@ -307,10 +353,37 @@ export default function AdminPage() {
                 <button
                   type="button"
                   className={styles.editBtn}
-                  onClick={() => { setSuccessMsg(''); setEditTarget(book); setView('edit') }}
+                  onClick={() => { setSuccessMsg(''); setConfirmDeleteId(null); setEditTarget(book); setView('edit') }}
                 >
                   Edit
                 </button>
+                {confirmDeleteId === book.id ? (
+                  <div className={styles.confirmRow}>
+                    <span className={styles.confirmText}>Sure?</span>
+                    <button
+                      type="button"
+                      className={styles.confirmYesBtn}
+                      onClick={() => { removeBook(book.id); setConfirmDeleteId(null) }}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.confirmNoBtn}
+                      onClick={() => setConfirmDeleteId(null)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    className={styles.removeBtn}
+                    onClick={() => setConfirmDeleteId(book.id)}
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             ))}
           </div>
