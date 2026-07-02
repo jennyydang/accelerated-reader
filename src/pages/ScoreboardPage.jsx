@@ -25,7 +25,7 @@ function StarDisplay({ stars, total = 3 }) {
 export default function ScoreboardPage() {
   const navigate = useNavigate()
   const [entries] = useState(() =>
-    loadScoreboard().sort((a, b) => a.stars - b.stars || a.timestamp - b.timestamp)
+    loadScoreboard().sort((a, b) => b.stars - a.stars || a.timestamp - b.timestamp)
   )
 
   return (
