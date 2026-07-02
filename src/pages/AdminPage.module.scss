@@ -216,13 +216,14 @@
 
 .adminGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: $space-lg;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $space-xl;
+  align-items: stretch;
 }
 
 .bookCardWrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
   gap: $space-xs;
 }
 
