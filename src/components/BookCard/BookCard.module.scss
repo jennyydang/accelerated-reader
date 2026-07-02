@@ -1,7 +1,7 @@
-$book-w: 300px;
-$book-h: 400px;
-$spine-w: 40px;
-$pages-w: 12px;
+$book-w: 180px;
+$book-h: 240px;
+$spine-w: 24px;
+$pages-w: 8px;
 
 .bookScene {
   perspective: 600px;
@@ -80,7 +80,7 @@ $pages-w: 12px;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   color: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: $font-weight-bold;
   letter-spacing: 0.06em;
   white-space: nowrap;
