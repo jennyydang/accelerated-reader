@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './ScoreboardPage.module.scss'
 
@@ -14,7 +14,7 @@ function StarDisplay({ stars, total = 3 }) {
   return (
     <span className={styles.stars} aria-label={`${stars} stars`}>
       {Array.from({ length: total }, (_, i) => (
-        <span key={i} className={i < stars ? styles.starFilled : styles.starEmpty}>
+        <span key={i} className={i < stars ? styles.starFilled : styles.starEmpty} aria-hidden="true">
           {i < stars ? '★' : '☆'}
         </span>
       ))}
@@ -28,28 +28,30 @@ export default function ScoreboardPage() {
     loadScoreboard().sort((a, b) => b.stars - a.stars || a.timestamp - b.timestamp)
   )
 
+  useEffect(() => { document.title = 'Scoreboard — Accelerated Reader' }, [])
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.arBadge}>AR</div>
-        <span className={styles.headerLabel}>⭐ Gold Star Scoreboard</span>
+        <div className={styles.arBadge} aria-hidden="true">AR</div>
+        <h1 className={styles.headerLabel}>⭐ Gold Star Scoreboard</h1>
       </header>
 
-      <main className={styles.content}>
+      <main id="main-content" className={styles.content}>
         {entries.length === 0 ? (
           <div className={styles.empty}>
             <p className={styles.emptyText}>No scores yet — be the first to finish a quiz!</p>
           </div>
         ) : (
           <div className={styles.tableWrapper}>
-            <table className={styles.table}>
+            <table className={styles.table} aria-label="Quiz results scoreboard">
               <thead>
                 <tr>
-                  <th className={styles.thRank}>#</th>
-                  <th className={styles.thName}>Name</th>
-                  <th className={styles.thBook}>Book</th>
-                  <th className={styles.thScore}>Score</th>
-                  <th className={styles.thStars}>Stars</th>
+                  <th className={styles.thRank} scope="col">#</th>
+                  <th className={styles.thName} scope="col">Name</th>
+                  <th className={styles.thBook} scope="col">Book</th>
+                  <th className={styles.thScore} scope="col">Score</th>
+                  <th className={styles.thStars} scope="col">Stars</th>
                 </tr>
               </thead>
               <tbody>

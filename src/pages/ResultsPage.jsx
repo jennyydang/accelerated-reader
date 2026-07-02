@@ -26,6 +26,8 @@ export default function ResultsPage() {
   const location = useLocation()
   const state = location.state
 
+  useEffect(() => { document.title = 'Quiz Results — Accelerated Reader' }, [])
+
   useEffect(() => {
     if (!state?.bookTitle) navigate('/books', { replace: true })
   }, [state, navigate])
@@ -66,13 +68,13 @@ export default function ResultsPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.arBadge}>AR</div>
-        <span className={styles.headerLabel}>Quiz Results</span>
+        <div className={styles.arBadge} aria-hidden="true">AR</div>
+        <h1 className={styles.headerLabel}>Quiz Results</h1>
       </header>
 
-      <main className={styles.content}>
+      <main id="main-content" className={styles.content}>
         <div className={styles.card}>
-          <p className={styles.bookTitle}>{bookTitle}</p>
+          <h2 className={styles.bookTitle}>{bookTitle}</h2>
 
           <p className={styles.scoreLine}>
             You answered <strong>{score}</strong> out of <strong>{total}</strong> correctly
@@ -94,18 +96,27 @@ export default function ResultsPage() {
               <input
                 id="playerName"
                 type="text"
+                autoComplete="name"
                 className={`${styles.nameInput} ${nameError ? styles.inputError : ''}`}
                 value={name}
                 onChange={e => { setName(e.target.value); setNameError('') }}
                 placeholder="Your name"
                 maxLength={40}
                 autoFocus
+                aria-describedby="nameErrorMsg"
               />
               <button type="submit" className={styles.submitBtn}>
                 Submit
               </button>
             </div>
-            {nameError && <p className={styles.errorMsg}>{nameError}</p>}
+            <p
+              id="nameErrorMsg"
+              className={styles.errorMsg}
+              role="alert"
+              aria-live="assertive"
+            >
+              {nameError}
+            </p>
           </form>
 
           <button type="button" className={styles.backLink} onClick={() => navigate('/books')}>

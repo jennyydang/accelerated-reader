@@ -56,6 +56,7 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   color: $color-white;
+  margin: 0;
 }
 
 .content {
@@ -108,7 +109,7 @@
   padding: $space-md $space-lg;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: #2e7d32;
+  color: $color-dark;
 
   strong {
     font-weight: $font-weight-extrabold;
@@ -124,7 +125,7 @@
 
 .sectionSubtitle {
   font-size: $font-size-md;
-  color: #555;
+  color: $color-navy;
   margin-top: -$space-sm;
 }
 
@@ -150,4 +151,11 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   justify-items: start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 512px) {
+    justify-items: center;
+  }
 }

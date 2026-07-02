@@ -29,7 +29,7 @@
   color: $color-navy;
   text-align: center;
   line-height: 1.4;
-  margin: 0;
+  margin: 0 0 $space-sm;
 }
 
 .loginForm {
@@ -71,10 +71,11 @@
 
 .loginError {
   font-size: $font-size-sm;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   font-weight: $font-weight-semibold;
   text-align: center;
   margin: 0;
+  min-height: 1.2em;
 }
 
 // ===========================
@@ -117,6 +118,7 @@
   font-weight: $font-weight-bold;
   color: $color-white;
   flex: 1;
+  margin: 0;
 }
 
 .backBtn {
@@ -176,7 +178,7 @@
   padding: $space-md $space-lg;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: #2e7d32;
+  color: $color-dark;
 }
 
 .listActions {
@@ -249,8 +251,8 @@
   width: 100%;
   padding: $space-xs $space-md;
   background-color: $color-white;
-  color: $color-incorrect;
-  border: 2px solid $color-incorrect;
+  color: $color-incorrect-text;
+  border: 2px solid $color-incorrect-text;
   border-radius: $radius-sm;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
@@ -258,7 +260,7 @@
   transition: background-color $transition-fast, color $transition-fast;
 
   &:hover {
-    background-color: $color-incorrect;
+    background-color: $color-incorrect-text;
     color: $color-white;
   }
 }
@@ -272,7 +274,7 @@
 .confirmText {
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -280,7 +282,8 @@
 .confirmYesBtn {
   flex: 1;
   padding: $space-xs 0;
-  background-color: $color-incorrect;
+  min-height: 44px;
+  background-color: $color-incorrect-text;
   color: $color-white;
   border-radius: $radius-sm;
   font-size: $font-size-sm;
@@ -294,8 +297,9 @@
 .confirmNoBtn {
   flex: 1;
   padding: $space-xs 0;
+  min-height: 44px;
   background-color: $color-white;
-  color: #666;
+  color: $color-gray-mid;
   border: 1px solid $color-gray-light;
   border-radius: $radius-sm;
   font-size: $font-size-sm;
@@ -327,7 +331,7 @@
 
 .sectionHint {
   font-size: $font-size-sm;
-  color: #666;
+  color: $color-gray-mid;
   margin-top: -$space-sm;
 }
 
@@ -383,13 +387,13 @@
 
 .errorMsg {
   font-size: $font-size-sm;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   font-weight: $font-weight-semibold;
 }
 
 .hint {
   font-size: $font-size-sm;
-  color: #888;
+  color: $color-gray-mid;
 }
 
 .coverModeToggle {
@@ -456,7 +460,7 @@
 .colorHex {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: #555;
+  color: $color-gray-mid;
   font-family: monospace;
 }
 

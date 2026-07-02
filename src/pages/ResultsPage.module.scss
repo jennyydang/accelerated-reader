@@ -33,6 +33,7 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   color: $color-white;
+  margin: 0;
 }
 
 .content {
@@ -60,6 +61,7 @@
   font-weight: $font-weight-extrabold;
   color: $color-navy;
   text-align: center;
+  margin: 0;
 }
 
 .scoreLine {
@@ -76,7 +78,7 @@
 }
 
 .pct {
-  color: #666;
+  color: $color-gray-mid;
   font-size: $font-size-sm;
 }
 
@@ -180,14 +182,15 @@
 
 .errorMsg {
   font-size: $font-size-sm;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   font-weight: $font-weight-semibold;
+  min-height: 1.2em;
 }
 
 .backLink {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: #888;
+  color: $color-gray-mid;
   background: none;
   border: none;
   cursor: pointer;

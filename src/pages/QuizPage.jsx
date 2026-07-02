@@ -18,6 +18,10 @@ export default function QuizPage() {
     if (!book) navigate('/books', { replace: true })
   }, [book, navigate])
 
+  useEffect(() => {
+    if (book) document.title = `${book.title} Quiz — Accelerated Reader`
+  }, [book])
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState({})
 
@@ -31,7 +35,6 @@ export default function QuizPage() {
   const canAdvance = currentAnswer != null
 
   function handleSelect(label) {
-    if (currentAnswer != null) return
     setAnswers(prev => ({ ...prev, [currentIndex]: label }))
   }
 
@@ -51,17 +54,17 @@ export default function QuizPage() {
       <QuizHeader bookTitle={bookTitle} />
       <ProgressBar current={currentIndex + 1} total={totalQuestions} />
 
-      <main className={styles.content}>
+      <main id="main-content" className={styles.content}>
         <p className={styles.question}>{question.question}</p>
 
-        <ul className={styles.options}>
+        <ul className={styles.options} role="list">
           {question.options.map(option => (
             <li key={option.label}>
               <OptionCard
                 option={option}
                 isSelected={currentAnswer === option.label}
                 onClick={() => handleSelect(option.label)}
-                disabled={canAdvance}
+                disabled={false}
               />
             </li>
           ))}

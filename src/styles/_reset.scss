@@ -25,6 +25,69 @@ button {
   font-family: inherit;
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 ul {
   list-style: none;
+}
+
+// ===========================
+// Accessibility utilities
+// ===========================
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+
+  &:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: $space-sm $space-md;
+    background-color: $color-navy;
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-md;
+    text-decoration: none;
+    outline: 3px solid $color-amber;
+    outline-offset: 2px;
+    z-index: 9999;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid $color-blue;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

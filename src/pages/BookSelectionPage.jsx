@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useBooksContext } from '../context/BooksContext.jsx'
 import BookCard from '../components/BookCard/BookCard.jsx'
@@ -13,6 +13,8 @@ export default function BookSelectionPage() {
 
   const [selectedBook, setSelectedBook] = useState(null)
 
+  useEffect(() => { document.title = 'Select a Book — Accelerated Reader' }, [])
+
   function handleConfirm() {
     navigate(`/quiz/${selectedBook.id}`)
   }
@@ -20,16 +22,16 @@ export default function BookSelectionPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.arBadge}>AR</div>
+        <div className={styles.arBadge} aria-hidden="true">AR</div>
         <div className={styles.headerText}>
-          <span className={styles.headerLabel}>Accelerated Reader</span>
+          <h1 className={styles.headerLabel}>Accelerated Reader</h1>
         </div>
         <button className={styles.homeBtn} onClick={() => navigate('/')}>← Home</button>
       </header>
 
-      <main className={styles.content}>
+      <main id="main-content" className={styles.content}>
         {result?.score !== undefined && (
-          <div className={styles.scoreBanner}>
+          <div className={styles.scoreBanner} role="status">
             <span className={styles.scoreIcon}>★</span>
             <span>
               You scored <strong>{result.score}</strong> out of <strong>{result.total}</strong> on{' '}
@@ -39,7 +41,7 @@ export default function BookSelectionPage() {
         )}
 
         {result?.newBook && (
-          <div className={styles.successBanner}>
+          <div className={styles.successBanner} role="status">
             <span>✓ <strong>{result.newBook}</strong> has been added to the library!</span>
           </div>
         )}
@@ -47,11 +49,13 @@ export default function BookSelectionPage() {
         <h2 className={styles.sectionTitle}>Select a Book</h2>
         <p className={styles.sectionSubtitle}>Choose a book to take a Reading Practice quiz.</p>
 
-        <div className={styles.grid}>
+        <ul className={styles.grid} role="list">
           {books.map(book => (
-            <BookCard key={book.id} book={book} onClick={setSelectedBook} />
+            <li key={book.id}>
+              <BookCard book={book} onClick={setSelectedBook} />
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
 
       <ConfirmDialog

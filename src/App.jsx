@@ -8,7 +8,9 @@ import ScoreboardPage from './pages/ScoreboardPage.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/books" element={<BookSelectionPage />} />
@@ -18,5 +20,6 @@ export default function App() {
         <Route path="/scoreboard" element={<ScoreboardPage />} />
       </Routes>
     </BrowserRouter>
+    </>
   )
 }

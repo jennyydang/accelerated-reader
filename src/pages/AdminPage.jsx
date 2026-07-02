@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBooksContext } from '../context/BooksContext.jsx'
 import BookCard from '../components/BookCard/BookCard.jsx'
@@ -116,8 +116,9 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
                 onChange={e => setTitle(e.target.value)}
                 placeholder="e.g. The Hobbit"
                 data-error={!!errors.title}
+                aria-describedby={errors.title ? 'titleError' : undefined}
               />
-              {errors.title && <p className={styles.errorMsg}>{errors.title}</p>}
+              {errors.title && <p id="titleError" className={styles.errorMsg} role="alert">{errors.title}</p>}
             </div>
 
             <div className={styles.field}>
@@ -130,17 +131,19 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
                 onChange={e => setAuthor(e.target.value)}
                 placeholder="e.g. J.R.R. Tolkien"
                 data-error={!!errors.author}
+                aria-describedby={errors.author ? 'authorError' : undefined}
               />
-              {errors.author && <p className={styles.errorMsg}>{errors.author}</p>}
+              {errors.author && <p id="authorError" className={styles.errorMsg} role="alert">{errors.author}</p>}
             </div>
 
-            <div className={styles.field}>
-              <label className={styles.fieldLabel}>Cover Image</label>
-              <div className={styles.coverModeToggle}>
+            <fieldset className={styles.field}>
+              <legend className={styles.fieldLabel}>Cover Image</legend>
+              <div className={styles.coverModeToggle} role="group" aria-label="Cover image source">
                 <button
                   type="button"
                   className={`${styles.coverModeBtn} ${coverMode === 'url' ? styles.coverModeBtnActive : ''}`}
                   onClick={() => setCoverMode('url')}
+                  aria-pressed={coverMode === 'url'}
                 >
                   URL
                 </button>
@@ -148,12 +151,14 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
                   type="button"
                   className={`${styles.coverModeBtn} ${coverMode === 'upload' ? styles.coverModeBtnActive : ''}`}
                   onClick={() => setCoverMode('upload')}
+                  aria-pressed={coverMode === 'upload'}
                 >
                   Upload Photo
                 </button>
               </div>
               {coverMode === 'url' ? (
                 <>
+                  <label className="sr-only" htmlFor="coverUrl">Cover image URL</label>
                   <input
                     id="coverUrl"
                     type="url"
@@ -166,6 +171,7 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
                 </>
               ) : (
                 <>
+                  <label className="sr-only" htmlFor="coverFile">Upload cover image file</label>
                   <input
                     id="coverFile"
                     type="file"
@@ -176,7 +182,7 @@ function BookForm({ initialBook, onSave, onCancel, submitLabel }) {
                   {coverImageUrl && <p className={styles.hint}>Photo selected — see preview on the right.</p>}
                 </>
               )}
-            </div>
+            </fieldset>
 
             <div className={styles.field}>
               <label className={styles.fieldLabel} htmlFor="coverColor">Cover Color (fallback)</label>
@@ -258,6 +264,8 @@ export default function AdminPage() {
   const [passwordError, setPasswordError] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
 
+  useEffect(() => { document.title = 'Admin Panel — Accelerated Reader' }, [])
+
   function handleLogin(e) {
     e.preventDefault()
     if (password === 'password') {
@@ -296,10 +304,13 @@ export default function AdminPage() {
     return (
       <div className={styles.loginPage}>
         <div className={styles.loginCard}>
-          <p className={styles.loginHeading}>Hello, Divine One. Please enter your password.</p>
+          <h1 className={styles.loginHeading}>Hello, Divine One. Please enter your password.</h1>
           <form onSubmit={handleLogin} className={styles.loginForm}>
+            <label htmlFor="adminPassword" className="sr-only">Password</label>
             <input
+              id="adminPassword"
               type="password"
+              autoComplete="current-password"
               className={styles.passwordInput}
               value={password}
               onChange={e => { setPassword(e.target.value); setPasswordError('') }}
@@ -308,7 +319,13 @@ export default function AdminPage() {
             />
             <button type="submit" className={styles.loginBtn}>Enter</button>
           </form>
-          {passwordError && <p className={styles.loginError}>{passwordError}</p>}
+          <p
+            className={styles.loginError}
+            role="alert"
+            aria-live="assertive"
+          >
+            {passwordError}
+          </p>
         </div>
       </div>
     )
@@ -318,8 +335,8 @@ export default function AdminPage() {
     return (
       <div className={styles.page}>
         <header className={styles.header}>
-          <div className={styles.arBadge}>AR</div>
-          <span className={styles.headerLabel}>Admin Panel</span>
+          <div className={styles.arBadge} aria-hidden="true">AR</div>
+          <h1 className={styles.headerLabel}>Admin Panel</h1>
           <button type="button" className={styles.backBtn} onClick={() => navigate('/books')}>
             ← Back to Site
           </button>
@@ -328,9 +345,9 @@ export default function AdminPage() {
           </button>
         </header>
 
-        <main className={styles.content}>
+        <main id="main-content" className={styles.content}>
           {successMsg && (
-            <div className={styles.successBanner}>
+            <div className={styles.successBanner} role="status">
               ✓ {successMsg}
             </div>
           )}
@@ -349,7 +366,7 @@ export default function AdminPage() {
           <div className={styles.adminGrid}>
             {books.map(book => (
               <div key={book.id} className={styles.bookCardWrapper}>
-                <BookCard book={book} onClick={() => {}} noHover />
+                <BookCard book={book} onClick={() => {}} noHover nonInteractive />
                 <button
                   type="button"
                   className={styles.editBtn}
@@ -395,16 +412,16 @@ export default function AdminPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.arBadge}>AR</div>
-        <span className={styles.headerLabel}>
+        <div className={styles.arBadge} aria-hidden="true">AR</div>
+        <h1 className={styles.headerLabel}>
           {view === 'edit' ? `Editing: ${editTarget.title}` : 'Add New Book'}
-        </span>
+        </h1>
         <button type="button" className={styles.backBtn} onClick={handleCancel}>
           ← {view === 'edit' ? 'Cancel' : 'Back'}
         </button>
       </header>
 
-      <main className={styles.content}>
+      <main id="main-content" className={styles.content}>
         <BookForm
           key={view === 'edit' ? editTarget.id : 'new'}
           initialBook={view === 'edit' ? editTarget : null}

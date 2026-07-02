@@ -69,7 +69,7 @@
 .rpLabel {
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  color: $color-amber;
+  color: $color-navy;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -84,7 +84,7 @@
 
 .bookAuthor {
   font-size: $font-size-sm;
-  color: #666;
+  color: $color-gray-mid;
   font-weight: $font-weight-semibold;
 }
 
@@ -111,7 +111,7 @@
   border-radius: $radius-lg;
   font-size: $font-size-md;
   font-weight: $font-weight-bold;
-  color: #555;
+  color: $color-gray-mid;
   background-color: $color-white;
   transition: border-color $transition-fast, color $transition-fast;
 

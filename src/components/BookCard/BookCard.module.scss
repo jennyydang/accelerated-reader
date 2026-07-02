@@ -10,7 +10,12 @@ $pages-w: 8px;
   align-items: center;
   gap: $space-sm;
   cursor: pointer;
-  outline: none;
+
+  &:focus-visible {
+    outline: 3px solid $color-blue;
+    outline-offset: 4px;
+    border-radius: $radius-sm;
+  }
 }
 
 .book {

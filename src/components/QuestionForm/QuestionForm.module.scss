@@ -24,9 +24,9 @@
 .removeBtn {
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   background: none;
-  border: 1px solid $color-incorrect;
+  border: 1px solid $color-incorrect-text;
   border-radius: $radius-sm;
   padding: $space-xs $space-sm;
   cursor: pointer;
@@ -111,7 +111,7 @@
 
 .letterBadgeCorrect {
   background-color: $color-correct;
-  color: $color-white;
+  color: $color-dark;
 }
 
 .optionInput {
@@ -144,20 +144,21 @@
 
 .radio {
   accent-color: $color-correct;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
   cursor: pointer;
 }
 
 .correctText {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: #555;
+  color: $color-gray-mid;
   white-space: nowrap;
 }
 
 .errorMsg {
   font-size: $font-size-sm;
-  color: $color-incorrect;
+  color: $color-incorrect-text;
   font-weight: $font-weight-semibold;
 }
