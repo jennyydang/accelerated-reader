@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import styles from './ScoreboardPage.module.scss'
 
 function loadScoreboard() {
@@ -24,11 +24,22 @@ function StarDisplay({ stars, total = 3 }) {
 
 export default function ScoreboardPage() {
   const navigate = useNavigate()
-  const [entries] = useState(() =>
-    loadScoreboard().sort((a, b) => b.stars - a.stars || a.timestamp - b.timestamp)
-  )
+  const location = useLocation()
+  const bookTitle = location.state?.bookTitle ?? null
 
-  useEffect(() => { document.title = 'Scoreboard — Accelerated Reader' }, [])
+  const [entries] = useState(() => {
+    const all = loadScoreboard()
+    const filtered = bookTitle
+      ? all.filter(e => e.bookTitle === bookTitle)
+      : all
+    return filtered.sort((a, b) => b.stars - a.stars || a.timestamp - b.timestamp)
+  })
+
+  useEffect(() => {
+    document.title = bookTitle
+      ? `${bookTitle} Scoreboard — Accelerated Reader`
+      : 'Scoreboard — Accelerated Reader'
+  }, [bookTitle])
 
   return (
     <div className={styles.page}>
@@ -38,9 +49,13 @@ export default function ScoreboardPage() {
       </header>
 
       <main id="main-content" className={styles.content}>
+        {bookTitle && (
+          <p className={styles.bookLabel}>{bookTitle}</p>
+        )}
+
         {entries.length === 0 ? (
           <div className={styles.empty}>
-            <p className={styles.emptyText}>No scores yet — be the first to finish a quiz!</p>
+            <p className={styles.emptyText}>No scores yet — be the first to finish this quiz!</p>
           </div>
         ) : (
           <div className={styles.tableWrapper}>
@@ -49,7 +64,6 @@ export default function ScoreboardPage() {
                 <tr>
                   <th className={styles.thRank} scope="col">#</th>
                   <th className={styles.thName} scope="col">Name</th>
-                  <th className={styles.thBook} scope="col">Book</th>
                   <th className={styles.thScore} scope="col">Score</th>
                   <th className={styles.thStars} scope="col">Stars</th>
                 </tr>
@@ -59,7 +73,6 @@ export default function ScoreboardPage() {
                   <tr key={entry.timestamp} className={styles.row} data-stars={entry.stars}>
                     <td className={styles.rank}>{i + 1}</td>
                     <td className={styles.name}>{entry.name}</td>
-                    <td className={styles.book}>{entry.bookTitle}</td>
                     <td className={styles.score}>{entry.score}/{entry.total}</td>
                     <td className={styles.starsCell}>
                       <StarDisplay stars={entry.stars} />

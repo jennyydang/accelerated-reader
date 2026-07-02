@@ -62,7 +62,7 @@ export default function ResultsPage() {
     } catch {
       localStorage.setItem('arScoreboard', JSON.stringify([entry]))
     }
-    navigate('/scoreboard')
+    navigate('/scoreboard', { state: { bookTitle } })
   }
 
   return (

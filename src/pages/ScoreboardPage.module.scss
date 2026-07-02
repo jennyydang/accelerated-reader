@@ -38,13 +38,21 @@
 
 .content {
   flex: 1;
-  max-width: 760px;
+  max-width: 560px;
   width: 100%;
   margin: 0 auto;
-  padding: $space-xl;
+  padding: $space-xl $space-md;
   display: flex;
   flex-direction: column;
-  gap: $space-xl;
+  gap: $space-lg;
+}
+
+.bookLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-extrabold;
+  color: $color-navy;
+  text-align: center;
+  margin: 0;
 }
 
 .empty {
@@ -71,14 +79,14 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .thRank,
 .thName,
-.thBook,
 .thScore,
 .thStars {
-  padding: $space-md $space-lg;
+  padding: $space-sm $space-md;
   background-color: $color-navy;
   color: $color-white;
   font-size: $font-size-sm;
@@ -88,9 +96,9 @@
   text-transform: uppercase;
 }
 
-.thRank  { width: 48px; text-align: center; }
-.thScore { width: 72px; text-align: center; }
-.thStars { width: 110px; text-align: center; }
+.thRank  { width: 40px; text-align: center; }
+.thScore { width: 64px; text-align: center; }
+.thStars { width: 96px; text-align: center; }
 
 .row {
   border-bottom: 1px solid $color-gray-light;
@@ -105,7 +113,7 @@
 }
 
 .rank {
-  padding: $space-md;
+  padding: $space-sm $space-md;
   text-align: center;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
@@ -113,21 +121,17 @@
 }
 
 .name {
-  padding: $space-md $space-lg;
+  padding: $space-sm $space-md;
   font-weight: $font-weight-extrabold;
   font-size: $font-size-md;
   color: $color-navy;
-}
-
-.book {
-  padding: $space-md $space-lg;
-  font-size: $font-size-sm;
-  color: $color-gray-mid;
-  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .score {
-  padding: $space-md;
+  padding: $space-sm $space-md;
   text-align: center;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
@@ -135,7 +139,7 @@
 }
 
 .starsCell {
-  padding: $space-md;
+  padding: $space-sm $space-md;
   text-align: center;
 }
 
