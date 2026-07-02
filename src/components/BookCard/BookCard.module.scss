@@ -18,7 +18,7 @@ $pages-w: 8px;
   height: $book-h;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateY(-5deg);
+  transform: rotateY(0deg);
   transition: transform 0.5s ease;
 
   .bookScene:hover &,
