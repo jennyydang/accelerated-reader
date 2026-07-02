@@ -3,7 +3,7 @@ import styles from './BookCard.module.scss'
 
 const COVER_BASE = 'https://covers.openlibrary.org/b/isbn'
 
-export default function BookCard({ book, onClick }) {
+export default function BookCard({ book, onClick, noHover = false }) {
   const [imgFailed, setImgFailed] = useState(false)
 
   const imgSrc = book.coverImage || (book.isbn ? `${COVER_BASE}/${book.isbn}-M.jpg` : null)
@@ -12,7 +12,7 @@ export default function BookCard({ book, onClick }) {
 
   return (
     <article
-      className={styles.bookScene}
+      className={`${styles.bookScene} ${noHover ? styles.bookSceneStatic : ''}`}
       onClick={() => onClick(book)}
       tabIndex={0}
       onKeyDown={e => e.key === 'Enter' && onClick(book)}

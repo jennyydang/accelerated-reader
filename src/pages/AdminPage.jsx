@@ -349,7 +349,7 @@ export default function AdminPage() {
           <div className={styles.adminGrid}>
             {books.map(book => (
               <div key={book.id} className={styles.bookCardWrapper}>
-                <BookCard book={book} onClick={() => {}} />
+                <BookCard book={book} onClick={() => {}} noHover />
                 <button
                   type="button"
                   className={styles.editBtn}

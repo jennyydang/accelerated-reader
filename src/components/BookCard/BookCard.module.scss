@@ -21,8 +21,8 @@ $pages-w: 8px;
   transform: rotateY(0deg);
   transition: transform 0.5s ease;
 
-  .bookScene:hover &,
-  .bookScene:focus-visible & {
+  .bookScene:not(.bookSceneStatic):hover &,
+  .bookScene:not(.bookSceneStatic):focus-visible & {
     transform: rotateY(-30deg);
   }
 }
