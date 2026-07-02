@@ -8,7 +8,6 @@
 
 html, body, #root {
   height: 100%;
-  cursor: url('/cursors/cursor-default.svg') 0 0, auto;
 }
 
 body {
@@ -20,21 +19,10 @@ body {
 }
 
 button {
-  cursor: url('/cursors/cursor-pointer.svg') 0 0, pointer;
+  cursor: pointer;
   border: none;
   background: none;
   font-family: inherit;
-}
-
-a,
-select,
-[role="button"],
-input[type="submit"],
-input[type="button"],
-input[type="checkbox"],
-input[type="radio"],
-label[for] {
-  cursor: url('/cursors/cursor-pointer.svg') 0 0, pointer;
 }
 
 ul {

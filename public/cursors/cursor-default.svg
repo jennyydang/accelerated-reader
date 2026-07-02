@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 16 20" shape-rendering="crispEdges">
-  <!-- drop shadow -->
-  <path d="M1,1 L1,17 L4,14 L6,19 L8,18 L6,13 L10,13 Z" fill="rgba(0,0,0,0.18)"/>
-  <!-- black outline -->
-  <path d="M0,0 L0,16 L3,13 L5,18 L7,17 L5,12 L9,12 Z" fill="#111111"/>
-  <!-- cream fill -->
-  <path d="M1,2 L1,14 L3.5,11.5 L5.5,16 L6.5,15.5 L4.5,10.5 L7.5,10.5 Z" fill="#ede8d0"/>
-</svg>
