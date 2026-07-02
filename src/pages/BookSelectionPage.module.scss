@@ -27,6 +27,12 @@
   font-size: $font-size-lg;
   flex-shrink: 0;
   letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-blue-dark;
+  }
 }
 
 .headerText {
@@ -129,22 +135,6 @@
   margin-top: -$space-sm;
 }
 
-.homeBtn {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
-  color: $color-white;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: $radius-lg;
-  padding: $space-xs $space-md;
-  cursor: pointer;
-  transition: background-color $transition-fast;
-  white-space: nowrap;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.25);
-  }
-}
 
 .grid {
   display: grid;

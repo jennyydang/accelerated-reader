@@ -22,11 +22,10 @@ export default function BookSelectionPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.arBadge} aria-hidden="true">AR</div>
+        <button className={styles.arBadge} onClick={() => navigate('/')} aria-label="Go to home page">AR</button>
         <div className={styles.headerText}>
           <h1 className={styles.headerLabel}>Accelerated Reader</h1>
         </div>
-        <button className={styles.homeBtn} onClick={() => navigate('/')}>← Home</button>
       </header>
 
       <main id="main-content" className={styles.content}>
