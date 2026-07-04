@@ -1,41 +1,63 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import booksData from '../data/booksData.js'
+import { supabase } from '../lib/supabase.js'
 
 const BooksContext = createContext(null)
-const STORAGE_KEY = 'arBooks'
+const LS_KEY = 'arBooks'
+const DB_KEY = 'books'
 
-function loadBooks() {
+function getCachedBooks() {
   try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    const stored = JSON.parse(localStorage.getItem(LS_KEY))
     if (Array.isArray(stored) && stored.length > 0) return stored
   } catch {}
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(booksData))
   return booksData
 }
 
-function saveBooks(books) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(books))
-}
-
 export function BooksProvider({ children }) {
-  const [books, setBooks] = useState(loadBooks)
+  const [books, setBooks] = useState(getCachedBooks)
+
+  useEffect(() => {
+    if (!supabase) return
+
+    supabase
+      .from('books_store')
+      .select('value')
+      .eq('key', DB_KEY)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (error) return
+        if (!data) {
+          // First run: seed Supabase with the default book list
+          supabase.from('books_store').insert({ key: DB_KEY, value: booksData }).then()
+          return
+        }
+        const loaded = Array.isArray(data.value) && data.value.length > 0
+          ? data.value
+          : booksData
+        setBooks(loaded)
+        localStorage.setItem(LS_KEY, JSON.stringify(loaded))
+      })
+  }, [])
+
+  function persist(updated) {
+    setBooks(updated)
+    localStorage.setItem(LS_KEY, JSON.stringify(updated))
+    if (supabase) {
+      supabase.from('books_store').upsert({ key: DB_KEY, value: updated }).then()
+    }
+  }
 
   function addBook(book) {
-    const updated = [book, ...books]
-    saveBooks(updated)
-    setBooks(updated)
+    persist([book, ...books])
   }
 
   function updateBook(id, updatedBook) {
-    const updated = books.map(b => b.id === id ? updatedBook : b)
-    saveBooks(updated)
-    setBooks(updated)
+    persist(books.map(b => b.id === id ? updatedBook : b))
   }
 
   function removeBook(id) {
-    const updated = books.filter(b => b.id !== id)
-    saveBooks(updated)
-    setBooks(updated)
+    persist(books.filter(b => b.id !== id))
   }
 
   return (
