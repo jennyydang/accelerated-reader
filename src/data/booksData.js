@@ -5,6 +5,7 @@ const booksData = [
     author: 'Eric Carle',
     isbn: '9780399226908',
     coverColor: '#3D8B37',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780399226908&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
@@ -69,6 +70,7 @@ const booksData = [
     author: 'Laura Numeroff',
     isbn: '9780060245863',
     coverColor: '#C8791A',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780060245863&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
@@ -133,6 +135,7 @@ const booksData = [
     author: 'H.A. Rey',
     isbn: '9780395150238',
     coverColor: '#E8A020',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780395150238&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
@@ -197,6 +200,7 @@ const booksData = [
     author: 'Marc Brown',
     isbn: '9780316112505',
     coverColor: '#CC3333',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780316112505&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
@@ -261,6 +265,7 @@ const booksData = [
     author: 'Maurice Sendak',
     isbn: '9780064431781',
     coverColor: '#2C6E8A',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780064431781&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
@@ -325,6 +330,7 @@ const booksData = [
     author: 'Dr. Seuss',
     isbn: '9780394800011',
     coverColor: '#6A1B9A',
+    coverImage: 'https://books.google.com/books/content?vid=ISBN9780394800011&printsec=frontcover&img=1&zoom=3',
     questions: [
       {
         id: 1,
