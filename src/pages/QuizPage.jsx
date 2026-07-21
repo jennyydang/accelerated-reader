@@ -24,10 +24,19 @@ export default function QuizPage() {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [questions] = useState(() => {
+    if (!book) return []
+    const arr = [...book.questions]
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+    return arr
+  })
 
   if (!book) return null
 
-  const { title: bookTitle, questions } = book
+  const { title: bookTitle } = book
   const totalQuestions = questions.length
   const question = questions[currentIndex]
   const isLast = currentIndex === totalQuestions - 1
